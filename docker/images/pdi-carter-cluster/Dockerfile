@@ -64,7 +64,7 @@ EXPOSE ${CARTE_PORT}
 WORKDIR $KETTLE_HOME
 
 
-ENTRYPOINT ["../scripts/docker-entrypoint.sh"]
+ENTRYPOINT ["${PENTAHO_HOME}/scripts/docker-entrypoint.sh"]
 
 # Run Carte - these parameters are passed to the entrypoint
 CMD ["carte.sh", "carte.config.xml"]
