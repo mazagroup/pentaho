@@ -1,0 +1,35 @@
+version: '2'
+services:
+  master:
+    image:
+      mazagroup/pentaho:pdi-ce
+    network_mode: "bridge"
+    env_file:  
+     - master-vars.env   
+    ports:
+      - "8181:8181"
+      - "40000-40010"
+    environment:
+      - PDI_RELEASE=6.1
+      - PDI_VERSION=6.1.0.1-196
+      - CARTE_PORT=8181
+      - CARTE_IS_MASTER=Y
+      - CARTE_INCLUDE_MASTERS=N
+  slave:
+    image:
+      mazagroup/pentaho:pdi-ce
+    network_mode: "bridge"
+    env_file:  
+     - slave-vars.env       
+    ports:
+      - "8182"
+    environment:
+      - PDI_RELEASE=6.1
+      - PDI_VERSION=6.1.0.1-196
+      - CARTE_PORT=8182
+      - CARTE_IS_MASTER=N
+      - CARTE_INCLUDE_MASTERS=Y
+      - CARTE_MASTER_HOSTNAME=master
+      - CARTE_MASTER_PORT=8181
+    links:
+      - master
