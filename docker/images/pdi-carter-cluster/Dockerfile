@@ -28,7 +28,7 @@ COPY carte-*.config.xml $PENTAHO_HOME/templates/
 COPY docker-entrypoint.sh $PENTAHO_HOME/scripts/
 
 RUN chown -R pentaho:pentaho $PENTAHO_HOME 
-# chmod +x $PENTAHO_HOME/scripts/docker-entrypoint.sh && \
+chmod +x $PENTAHO_HOME/scripts/docker-entrypoint.sh && \
 
 
 # Switch to the pentaho user
@@ -64,7 +64,7 @@ EXPOSE ${CARTE_PORT}
 WORKDIR $KETTLE_HOME
 
 
-ENTRYPOINT ["${PENTAHO_HOME}/scripts/docker-entrypoint.sh"]
+ENTRYPOINT ["/home/pentaho/scripts/docker-entrypoint.sh"]
 
 # Run Carte - these parameters are passed to the entrypoint
 CMD ["carte.sh", "carte.config.xml"]
