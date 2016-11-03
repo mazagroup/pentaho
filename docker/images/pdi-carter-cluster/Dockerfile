@@ -28,7 +28,7 @@ COPY carte-*.config.xml $PENTAHO_HOME/templates/
 COPY docker-entrypoint.sh $PENTAHO_HOME/scripts/
 
 RUN chown -R pentaho:pentaho $PENTAHO_HOME 
-RUN chmod +x $PENTAHO_HOME/scripts/docker-entrypoint.sh && \
+RUN chmod +x $PENTAHO_HOME/scripts/docker-entrypoint.sh
 
 
 # Switch to the pentaho user
