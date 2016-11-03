@@ -23,6 +23,7 @@ services:
      - slave-vars.env       
     ports:
       - "8182"
+      - "40000-40010"
     environment:
       - PDI_RELEASE=6.1
       - PDI_VERSION=6.1.0.1-196
