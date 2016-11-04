@@ -1,19 +1,5 @@
 version: '2'
 services:
-  cartemaster:
-    image:
-      mazagroup/pentaho:pdi-ce
-    network_mode: "bridge"
-    ports:
-      - "8181:8181"
-    environment:
-      - PDI_RELEASE=6.1
-      - PDI_VERSION=6.1.0.1-196
-      - CARTE_PORT=8181
-      - CARTE_IS_MASTER=Y
-      - CARTE_INCLUDE_MASTERS=N
-    labels:
-      - "constraint:bi.node.service.layer==pdi"
   carteworker:
     image:
       mazagroup/pentaho:pdi-ce
@@ -30,8 +16,8 @@ services:
       - CARTE_MASTER_PORT=8181
     labels:
       - "constraint:bi.node.service.layer==pdi"
-    links:
-      - cartemaster
+    external-links:
+      - pdicartercluster_cartemaster_1:cartemaster
 networks:
   default:
     external:
