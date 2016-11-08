@@ -3,7 +3,6 @@ services:
   cartemaster:
     image:
       mazagroup/pentaho:pdi-ce
-    network_mode: "bridge"
     ports:
       - "8181:8181"
     environment:
@@ -17,7 +16,6 @@ services:
   carteworker:
     image:
       mazagroup/pentaho:pdi-ce
-    network_mode: "bridge"
     ports:
       - "8182"
     environment:
@@ -35,4 +33,4 @@ services:
 networks:
   default:
     external:
-      name: pentaho-pdi-network 
+      name: pentaho-overlay-network
